@@ -1,32 +1,27 @@
-name: ENV with Parallel Jobs
+name: Sequence Jobs Example
  
 on:
   push:
     branches:
       - main
  
-env:
-  COMPANY: OpenAI
- 
 jobs:
-  job-one:
+  build-job:
     runs-on: ubuntu-latest
-    env:
-      ROLE: Backend
- 
     steps:
-      - name: Job One ENV
-        run: |
-          echo "Company is $COMPANY"
-          echo "Role is $ROLE"
+      - name: Build step
+        run: echo "Build completed"
  
-  job-two:
+  test-job:
     runs-on: ubuntu-latest
-    env:
-      ROLE: DevOps
- 
+    needs: build-job
     steps:
-      - name: Job Two ENV
-        run: |
-          echo "Company is $COMPANY"
-          echo "Role is $ROLE"
+      - name: Test step
+        run: echo "Tests completed"
+ 
+  deploy-job:
+    runs-on: ubuntu-latest
+    needs: test-job
+    steps:
+      - name: Deploy step
+        run: echo "Deployment completed"
