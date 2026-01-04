@@ -1,28 +1,32 @@
-name: Beginner GitHub Actions
+name: ENV with Parallel Jobs
  
 on:
   push:
     branches:
       - main
  
+env:
+  COMPANY: OpenAI
+ 
 jobs:
-  first-job:
+  job-one:
     runs-on: ubuntu-latest
+    env:
+      ROLE: Backend
  
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: show current directory
-        run: pwd
-      - name: list of files
-        run: ls -l
-      - name: show me content of readme file
-        run: cat README.md
-        
+      - name: Job One ENV
+        run: |
+          echo "Company is $COMPANY"
+          echo "Role is $ROLE"
  
-      - name: Print message
-        run: echo "Hello from GitHub Actions"
+  job-two:
+    runs-on: ubuntu-latest
+    env:
+      ROLE: DevOps
  
-      - name: Show files
-        run: ls
- 
+    steps:
+      - name: Job Two ENV
+        run: |
+          echo "Company is $COMPANY"
+          echo "Role is $ROLE"
