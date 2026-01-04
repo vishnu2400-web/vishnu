@@ -1,7 +1,9 @@
 name: Beginner GitHub Actions
  
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
  
 jobs:
   first-job:
@@ -16,3 +18,4 @@ jobs:
  
       - name: Show files
         run: ls
+ 
