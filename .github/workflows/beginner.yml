@@ -9,3 +9,9 @@ jobs:
     steps:
       - name: Print message
         run: echo "GitHub Actions is working"
+ 
+      - name: Show current directory
+        run: pwd
+ 
+      - name: List files
+        run: ls -la
