@@ -12,6 +12,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: show current directory
+        run: pwd
+      - name: list of files
+        run: ls -l
+      - name: show me content of readme file
+        run: cat README.md
+        
  
       - name: Print message
         run: echo "Hello from GitHub Actions"
