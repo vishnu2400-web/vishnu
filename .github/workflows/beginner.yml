@@ -1,4 +1,4 @@
-name: Beginner GitHub Action
+name: Beginner GitHub Actions
  
 on:
   workflow_dispatch:
@@ -6,6 +6,13 @@ on:
 jobs:
   first-job:
     runs-on: ubuntu-latest
+ 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+ 
       - name: Print message
-        run: echo "GitHub Actions is working"
+        run: echo "Hello from GitHub Actions"
+ 
+      - name: Show files
+        run: ls
