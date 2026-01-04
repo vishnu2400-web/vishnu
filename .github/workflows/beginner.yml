@@ -1,7 +1,7 @@
 name: Beginner GitHub Action
  
 on:
-  push:
+  workflow_dispatch:
  
 jobs:
   first-job:
