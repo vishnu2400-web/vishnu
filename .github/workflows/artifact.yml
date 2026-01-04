@@ -1,0 +1,22 @@
+name: Artifact Demo
+ 
+on:
+  push:
+    branches:
+      - main
+ 
+jobs:
+  artifact-job:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Create a file
+        run: |
+          echo "This file is created during CI" > output.txt
+ 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: output.txt
+ 
